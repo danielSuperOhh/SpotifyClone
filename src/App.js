@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import styled from 'styled-components';
+import { AppRoute } from './appRoute';
+import { Navigation } from "./components";
+import { useLocation } from "react-router-dom"
 
-function App() {
+// Get the hash of the url
+
+const App = () => {
+
+  const [isNav, toggleNav] = useState(false)
+
+  const { pathname } = useLocation()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+
+      <AppContainer>
+        {pathname !== "/" && <Navigation isNav={isNav} toggleNav={toggleNav} />}
+        <AppRouteContainer>
+          <AppRoute toggleNav={toggleNav} />
+        </AppRouteContainer>
+      </AppContainer>
+
+
     </div>
-  );
+  )
 }
+const AppContainer = styled.div`
+  display: flex;
+`;
+
+const AppRouteContainer = styled.div`
+  flex: 1;
+`;
 
 export default App;
