@@ -48,7 +48,7 @@ export const Home = ({ toggleNav }) => {
         };
 
         getTracks();
-    }, [])
+    }, [token])
 
     const minutes = (secs) => {
         const mins = Math.floor((secs / 1000 / 60) % 60)

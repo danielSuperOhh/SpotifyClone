@@ -34,7 +34,7 @@ export const Login = () => {
             window.localStorage.setItem("token", _token);
             navigate("/home")
         }
-    }, [])
+    }, [hash.access_token, navigate])
 
     return (
         <Container>
