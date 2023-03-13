@@ -110,7 +110,7 @@ export const Home = ({ toggleNav }) => {
       //   animationRef.current = requestAnimationFrame(whilePlaying);
     }
   };
-
+ 
   console.log(currentSong, "kdkd");
 
   // =======================================================================
@@ -126,7 +126,7 @@ export const Home = ({ toggleNav }) => {
 
   return (
     <HomeContainer>
-      <audio ref={musicPlayer} src={currentSong?.track?.preview_url}></audio>
+      <audio ref={musicPlayer} src={currentSong?.track?.preview_url}/>
       <Center>
         <Section1>
           <Arrows>
