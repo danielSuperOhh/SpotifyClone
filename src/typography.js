@@ -13,7 +13,7 @@ export const Header22 = styled.h3`
 `;
 
 export const Header3 = styled.h3`
-    font-size: 1.25;
+    font-size: 1.25rem;
     line-height: 24px;
     font-weight: 600;
 `;
