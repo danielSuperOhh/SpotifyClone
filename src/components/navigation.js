@@ -9,9 +9,12 @@ import { RiCompass3Line } from "react-icons/ri";
 import { RxDashboard } from "react-icons/rx";
 import { CgCalendarDates } from "react-icons/cg";
 import { TbTicket } from "react-icons/tb";
+
+import { BiLogOutCircle } from "react-icons/bi";
+
 import { HiOutlineHeart, HiOutlineUserGroup, HiOutlineStar } from "react-icons/hi";
 import { FaUserCircle } from "react-icons/fa";
-import { MdKeyboardArrowRight, MdOutlineClose } from "react-icons/md";
+import { MdOutlineClose } from "react-icons/md";
 import axios from 'axios';
 import { baserUrl } from '../utils/api/authorize';
 import { useState, useEffect } from 'react';
@@ -41,6 +44,11 @@ export const Navigation = ({ isNav, toggleNav }) => {
 
         getProfile();
     }, [token])
+
+    const logout = () => {
+        localStorage.clear()
+        navigate("/")
+    }
 
 
     console.log(user, "user");
@@ -106,13 +114,17 @@ export const Navigation = ({ isNav, toggleNav }) => {
                     <HiOutlineStar size="21px" color="#767678" />
                     <NavLinkText>Albums</NavLinkText>
                 </NavLinkContainer>
+                <NavLinkContainer onClick={logout} >
+                    <BiLogOutCircle size="21px" color="#767678" />
+                    <NavLinkText>Logout</NavLinkText>
+                </NavLinkContainer>
+
             </Navlinks>
 
             <Profile>
                 <FaUserCircle size="30" color="#221C33" />
                 <ProfileText>
                     <ProfText>{user?.display_name}</ProfText>
-                    <MdKeyboardArrowRight size="20" />
                 </ProfileText>
             </Profile>
 
@@ -228,6 +240,16 @@ const Navlinks = styled.div`
         justify-content: center;
     }
 `;
+
+// const LogoutButton = styled.div`
+//     width: 80%;
+//     display: flex;
+//     align-items: center;
+//     margin-top: 3px;
+//     height: 40px;
+//     padding-left: 21px;
+//     bottom: 0;
+// `;
 
 const NavLinkContainer = styled.div`
     width: 80%;
