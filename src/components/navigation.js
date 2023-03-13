@@ -40,7 +40,7 @@ export const Navigation = ({ isNav, toggleNav }) => {
         };
 
         getProfile();
-    }, [])
+    }, [token])
 
 
     console.log(user, "user");
