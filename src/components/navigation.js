@@ -64,7 +64,7 @@ export const Navigation = ({ isNav, toggleNav }) => {
             </Navheader>
 
             <Navlinks>
-                <NavLinkContainer onClick={() => navigate("/")}>
+                <NavLinkContainer onClick={() => navigate("/home")}>
                     <BiHomeCircle size="21px" color="#767678" />
                     <NavLinkText>Home</NavLinkText>
                 </NavLinkContainer>
@@ -98,11 +98,11 @@ export const Navigation = ({ isNav, toggleNav }) => {
                     <HiOutlineHeart size="21px" color="#767678" />
                     <NavLinkText>Favourite Songs</NavLinkText>
                 </NavLinkContainer>
-                <NavLinkContainer onClick={() => navigate("/artists")}>
+                <NavLinkContainer >
                     <HiOutlineUserGroup size="21px" color="#767678" />
                     <NavLinkText>Artist</NavLinkText>
                 </NavLinkContainer>
-                <NavLinkContainer onClick={() => navigate("/album")}>
+                <NavLinkContainer >
                     <HiOutlineStar size="21px" color="#767678" />
                     <NavLinkText>Albums</NavLinkText>
                 </NavLinkContainer>
@@ -125,8 +125,15 @@ const NavContainer = styled.section`
     height: 100vh;
     background-color: ${colors.sidebar} ;
     position: sticky;
+    top: 0;
     flex: 0 0 256px;
     padding-left: 15px;
+
+    @media(max-width: 1000px){
+        width: 100px;
+        flex: 0 0 100px;
+    }
+
 
     @media(max-width: 700px){
         position: fixed;
@@ -138,6 +145,10 @@ const NavContainer = styled.section`
         width: ${({ isNav }) => isNav ? "256px" : "0"};
     }
     
+    @media(max-height: 1000px){
+        height: 100vh;
+    }
+
 `;
 
 const Space = styled.section`
@@ -160,6 +171,13 @@ const CloseIcon = styled.div`
 
     @media (max-width: 700px){
         display: flex;
+        
+        svg{
+            
+            margin-left: 200px;
+            width: 30px;
+            height: 30px;
+        }
     }
 `;
 
@@ -173,6 +191,14 @@ const Navheader = styled.section`
 const Imagediv = styled.section`
     margin-left: 0;
     padding-left: 0;
+
+    /* @media(max-width: 1000px){
+        img{
+            width: 65px;
+            height: 65px;
+        }
+    } */
+
 `;
 
 const NavheaderText = styled(Header3)`
@@ -182,12 +208,24 @@ const NavheaderText = styled(Header3)`
     span{
         color: ${colors.logoColor};
     }
+
+    @media(max-width: 1000px){
+        display: none;
+    }
+
+    @media(max-width: 700px){
+        display: flex;
+    }
+
+
 `;
 
 const Navlinks = styled.div`
 
     @media (max-width: 700px){
         padding-left: 15px;
+        align-items: center;
+        justify-content: center;
     }
 `;
 
@@ -215,6 +253,8 @@ const NavLinkContainer = styled.div`
     }
 
     @media (max-width: 700px){
+        align-items: center;
+
         svg{
             width: 19px;
             height: 18px;
@@ -232,6 +272,16 @@ const NavLinkText = styled(Bodytext2)`
     @media (max-width: 700px){
         font-size: .8rem;
     }
+
+    @media(max-width: 1000px){
+        display: none;
+    }
+
+    @media(max-width: 700px){
+        display: flex;
+    }
+
+
 `;
 
 const NavText = styled(Bodytext1)`
@@ -242,6 +292,17 @@ const NavText = styled(Bodytext1)`
     @media (max-width: 700px){
         margin-top: 15px;
     }
+
+    @media (max-width: 830px){
+        visibility: hidden;
+        margin-top: 0px;
+    }
+
+    @media(max-width: 1000px){
+        visibility: hidden;
+        margin-top: 14px;
+    }
+
 `;
 
 const Profile = styled.div`
@@ -253,6 +314,10 @@ const Profile = styled.div`
     display: flex;
     text-align: center;
     align-items: center;
+
+    @media (max-width: 700px){
+        padding-left: 30px;
+    }
 `;
 
 const ProfileText = styled.div`
@@ -260,6 +325,20 @@ const ProfileText = styled.div`
     display: flex;
     justify-content: space-between;
     padding-right: 40px;
+
+    @media(max-width: 1000px){
+        display: none;
+    }
+
+    @media (max-width: 700px){
+        display: flex;
+
+        svg{
+            display: none;
+        }
+    }
+
+
 `;
 
 const ProfText = styled(Bodytext2)`

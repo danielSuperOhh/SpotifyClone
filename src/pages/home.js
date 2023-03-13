@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { colors } from '../colors';
 import {
     BsArrowRightShort, BsArrowLeftShort, BsRepeat, BsShuffle,
-    BsFillPauseCircleFill, BsFillRewindFill, BsFillFastForwardFill, BsFillPlayCircleFill, BsArrowsAngleExpand
+    BsFillPauseCircleFill, BsFillRewindFill, BsFillFastForwardFill, BsFillPlayCircleFill, BsPauseFill, BsPlayFill, BsDot
 } from "react-icons/bs";
 import { HiOutlineHeart } from "react-icons/hi";
 import { TbVolume, TbVolume2 } from "react-icons/tb";
 import { CiSearch } from "react-icons/ci";
 import { BsThreeDots } from "react-icons/bs";
+import { CgExpand } from "react-icons/cg";
 import { GrStatusGood } from "react-icons/gr";
 import { Bodytext2, Header2, Bodytext3, Bodytext1, Header3, Header22 } from '../typography';
 import { MdKeyboardArrowRight, MdOutlinePlaylistAdd, MdOutlineAddCircleOutline, MdOutlineMenu } from "react-icons/md";
@@ -72,6 +73,17 @@ export const Home = ({ toggleNav }) => {
         setIsAdding((prev) => !prev)
     };
 
+                                            // =======================================================================
+                                            // |                                                                     |
+                                            // |                                                                     |
+                                            // |                                                                     |
+                                            // |                            Signed                                   |
+                                            // |                          iPlayDaniel                                |
+                                            // |                                                                     |
+                                            // |                                                                     |
+                                            // |                                                                     |
+                                            // =======================================================================
+
     return (
         <HomeContainer>
             <Center>
@@ -92,86 +104,89 @@ export const Home = ({ toggleNav }) => {
                     <SearchBar>
                         <CiSearch size="24px" color="#767678" />
                         <SmallSpace></SmallSpace>
-                        <SearchBarText>Search for artist, songs and ...</SearchBarText>
+                        <SearchBarText>Search</SearchBarText>
                     </SearchBar>
                 </Section1>
 
                 {/* =============================== SECTION2 ========================= */}
 
-                <Section2>
-                    <WhatsHot>What's hot</WhatsHot>
-                    <Trending>
-                        <TrendingText>Trending</TrendingText>
-                        <More>More <MdKeyboardArrowRight /></More>
-                    </Trending>
-                </Section2>
+                <SongWrapper>
+                    <Section2>
+                        <WhatsHot>What's hot</WhatsHot>
+                        <Trending>
+                            <TrendingText>Trending</TrendingText>
+                            <More>More <MdKeyboardArrowRight /></More>
+                        </Trending>
+                    </Section2>
 
-                {/* =============================== SECTION3 ========================= */}
+                    {/* =============================== SECTION3 ========================= */}
 
-                <Section3>
-                    <SectionBox>
-                        <BoxHeaderText>Artist</BoxHeaderText>
-                        <BoxHeaderSubtext1>On Top </BoxHeaderSubtext1>
-                        <BoxHeaderSubtext2>Of The World</BoxHeaderSubtext2>
+                    <Section3>
+                        <SectionBox>
+                            <BoxHeaderText>Artist</BoxHeaderText>
+                            <BoxHeaderSubtext1>The Cavemen </BoxHeaderSubtext1>
+                            <BoxHeaderSubtext2>Beautiful Rain</BoxHeaderSubtext2>
 
-                        <ButtonSection>
-                            <TwoButtons>
-                                <Button
-                                    value={
-                                        <TextLink>PLAY</TextLink>
-                                    }
-                                />
-                                <Button
-                                    value={
-                                        <TextLink>FOLLOW</TextLink>
-                                    } />
-                            </TwoButtons>
-                            <ButtonSectionText>
-                                <ButText>Monthly Listeners</ButText>
-                                <ButNumbers>32,092</ButNumbers>
-                            </ButtonSectionText>
-                        </ButtonSection>
+                            <ButtonSection>
+                                <TwoButtons>
+                                    <Button
+                                        value={
+                                            <TextLink>PLAY</TextLink>
+                                        }
+                                    />
+                                    <Button
+                                        value={
+                                            <TextLink>FOLLOW</TextLink>
+                                        } />
+                                </TwoButtons>
+                                <ButtonSectionText>
+                                    <ButText>Monthly Listeners</ButText>
+                                    <ButNumbers>32,092</ButNumbers>
+                                </ButtonSectionText>
+                            </ButtonSection>
 
-                    </SectionBox>
-                </Section3>
+                        </SectionBox>
+                    </Section3>
 
-                <Section4>
-                    <PlaylistHeader>
-                        <PlaylistText>My Playlist</PlaylistText>
-                        <ShowAll>Show All</ShowAll>
-                    </PlaylistHeader>
-                </Section4>
+                    <Section4>
+                        <PlaylistHeader>
+                            <PlaylistText>Songs</PlaylistText>
+                            <ShowAll>Show All</ShowAll>
+                        </PlaylistHeader>
+                    </Section4>
 
-                <Section5>
-                    <Section5Header>
-                        <Class1>
-                            <Track>#</Track>
-                            <Title>TITLE</Title>
-                        </Class1>
-                        <Class2>
-                            <Singer>ARTIST</Singer>
-                        </Class2>
-                        <Class3>
-                            <Time>TIME</Time>
-                            <Albumm>ALBUM</Albumm>
-                        </Class3>
-                    </Section5Header>
-
-                    {tracks?.items?.map((track, i) =>
-                        <Section55Header key={track?.id}>
+                    <Section5>
+                        <Section5Header>
                             <Class1>
-                                <AshNum>{i + 1}</AshNum>
-                                <SongTitle>{track?.track?.name.split("").slice(0, 15)}{track?.track?.name?.length > 15 ? "..." : ""}</SongTitle>
+                                <Track>#</Track>
+                                <Title>TITLE</Title>
                             </Class1>
                             <Class2>
-                                <SongSinger>{track?.track?.artists?.map((artist) => `${artist?.name}${track?.track?.artists?.length > 1 ? ", " : ""}`)}</SongSinger>
+                                <Singer>ARTIST</Singer>
                             </Class2>
                             <Class3>
-                                <SongTime>{minutes(track?.track?.duration_ms)}</SongTime>
-                                <SongAlbumm>{track?.track?.album?.name}</SongAlbumm>
+                                <Time>TIME</Time>
+                                <Albumm>ALBUM</Albumm>
                             </Class3>
-                        </Section55Header>)}
-                </Section5>
+                        </Section5Header>
+
+                        {tracks?.items?.map((track, i) =>
+                            <Section55Header key={track?.id}>
+                                <Class1>
+                                    <AshNum>{i + 1}</AshNum>
+                                    <SongTitle>{track?.track?.name.split("").slice(0, 15)}{track?.track?.name?.length > 15 ? "..." : ""}</SongTitle>
+                                </Class1>
+                                <Class2>
+                                    <SongSinger>{track?.track?.artists?.map((artist) => `${artist?.name}${track?.track?.artists?.length > 1 ? ", " : ""}`)}</SongSinger>
+                                </Class2>
+                                <Class3>
+                                    <SongTime>{minutes(track?.track?.duration_ms)}</SongTime>
+                                    <SongAlbumm>{track?.track?.album?.name.split("").slice(0, 15)}{track?.track?.album?.length > 15 ? "..." : ""}</SongAlbumm>
+                                </Class3>
+                            </Section55Header>)}
+                    </Section5>
+
+                </SongWrapper>
 
                 <Section6>
                     <MusicPlayer>
@@ -184,21 +199,40 @@ export const Home = ({ toggleNav }) => {
                                     <MdOutlinePlaylistAdd size="24px" color="#aaa6b4" />
                                 </Heart>
                                 <Heart>
-                                    <BsArrowsAngleExpand color="#aaa6b4" />
+                                    <CgExpand color="#aaa6b4" size="20px" />
                                 </Heart>
                             </Like>
+
+                            <AlbumArt>
+                                <SongArt>
+                                    <SongArtPicture></SongArtPicture>
+                                    <SongArtText>
+                                        <SongArtText1>Apparently</SongArtText1>
+                                        <BsDot />
+                                        <SongArtText2>J Cole</SongArtText2>
+                                    </SongArtText>
+                                </SongArt>
+
+                                <PlayUlt>
+                                    <button onClick={togglePlayPause}>
+                                        {isPlaying ? <BsPauseFill size="30px" color="#221C33"/> : <BsPlayFill size="30px" color="#221C33"/>}
+                                    </button>
+                                </PlayUlt>
+                            </AlbumArt>
+                            
+
                             <Play>
-                                <BsRepeat color="#aaa6b4" />
-                                <BsFillRewindFill size="20px" />
+                                <BsRepeat color="#aaa6b4" size="20px"/>
+                                <BsFillRewindFill size="20px" color="#221C33"/>
                                 <button onClick={togglePlayPause}>
-                                    {isPlaying ? <BsFillPauseCircleFill size="30px" /> : <BsFillPlayCircleFill size="30px" />}
+                                    {isPlaying ? <BsFillPauseCircleFill size="30px" color="#221C33"/> : <BsFillPlayCircleFill size="30px" color="#221C33"/>}
                                 </button>
-                                <BsFillFastForwardFill size="20px" />
-                                <BsShuffle color="#aaa6b4" />
+                                <BsFillFastForwardFill size="20px" color="#221C33"/>
+                                <BsShuffle color="#aaa6b4" size="20px"/>
                             </Play>
                             <Volume>
                                 <TbVolume2 size="20px" color="#aaa6b4" />
-                                <LinearProgress color="neutral" determinate value={50} />
+                                <LinearProgress color="neutral" determinate value={50} thickness={2.5}/>
                                 <TbVolume size="20px" color="#aaa6b4" />
                             </Volume>
                         </TopSide>
@@ -334,11 +368,21 @@ const Section1 = styled.div`
     align-items: center;
     padding-top: 15px;
     padding-bottom: 20px;
+
+    @media (max-width: 900px){
+        padding-right: 22px;
+    }
 `;
 
 const Arrows = styled.div`
     display: flex;
     padding: 0px 40px 0px 40px;
+
+    @media (max-width: 900px){
+        padding-left: 20px;
+        padding-right: 15px;
+    }
+
 `;
 
 const MenuIcon = styled.div`
@@ -347,6 +391,14 @@ const MenuIcon = styled.div`
     @media (max-width: 700px){
         display: block;
     }
+
+    @media (max-width: 900px){
+        svg{
+            width: 24px;
+            height: 24px;
+        }
+    }
+
 `;
 
 const ArrowIcons = styled.div`
@@ -370,17 +422,49 @@ const SearchBar = styled.div`
     align-items: center;
     padding-left: 22px;
 
+
     @media (max-width: 700px){
         padding: 10px 0px 10px 20px;
     }
+
+    @media (max-width: 540px){
+        svg{
+            width: 19px;
+            height: 19px;
+        }
+    }
+
+    @media (max-width: 350px){
+       width: 90%;
+    }
+
 
 `;
 
 const SearchBarText = styled(Bodytext2)`
     color: ${colors.grayText};
+    
+    @media (max-width: 540px){
+        font-size: .8rem;
+    }
 `;
 
 // =============================== SECTION2 =========================
+
+const SongWrapper = styled.div`
+    width: 100%;
+    max-height: calc(100vh - 100px);
+    overflow-y: scroll;
+    padding-bottom: 100px;
+
+    @media(max-width: 540px){
+        padding-bottom: 50px;
+    }
+
+    @media(max-width: 440px){
+        padding-bottom: 50px;
+    }
+`;
 
 const Section2 = styled.div`
     width: 100%;
@@ -508,6 +592,13 @@ const TwoButtons = styled.div`
         }
     }
 
+    @media (max-width: 540px){
+        button{
+            padding: 6px 19px;
+        }
+    }
+
+
 `;
 
 const TextLink = styled(Bodytext2)`
@@ -515,6 +606,14 @@ const TextLink = styled(Bodytext2)`
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 700px;
+
+    @media(max-width: 540px){
+        font-size: .7rem;
+    }
+
+    @media(max-width: 380px){
+        font-size: .6rem;
+    }
 `;
 
 const ButtonSectionText = styled.div`
@@ -523,11 +622,20 @@ const ButtonSectionText = styled.div`
     @media (max-width: 700px){
         padding-top: 10px;
     }
+
+    @media(max-width: 380px){
+        display: none;
+    }
+
 `;
 
 const ButText = styled(Bodytext2)`
     color: ${colors.whiteText};
     letter-spacing: 1px;
+
+    @media (max-width: 540px){
+        font-size: .67rem;
+    }
 `;
 
 const ButNumbers = styled(Bodytext2)`
@@ -536,11 +644,16 @@ const ButNumbers = styled(Bodytext2)`
     margin-top: 2px;
     font-weight: 600;
     text-align: right;
+
+    @media (max-width: 540px){
+        font-size: .67rem;
+    }
 `;
 
 // ============================ SECTION 4============================
 const Section4 = styled.div`
     width: 100%;
+    height: 100%;
     padding: 30px 0px 15px 30px;
     background-color: ${colors.background};
 
@@ -572,6 +685,9 @@ const PlaylistText = styled(Header2)`
         font-size: 1.5625rem;
     }
 
+    @media(max-width: 440px){
+        font-size: 1.2rem;
+    }
 `;
 
 const ShowAll = styled(Bodytext3)`
@@ -584,14 +700,14 @@ const ShowAll = styled(Bodytext3)`
         font-size: 0.8125rem;
     }
 
+    @media(max-width: 440px){
+        font-size: .7rem;
+    }
 `;
 
 /* ================================ SECTION5 ===================== */
 const Section5 = styled.div`
     width: 100%;
-    height: 200px;
-    overflow: scroll;
-    overflow-x: hidden;
 `;
 
 
@@ -603,6 +719,11 @@ const Section5Header = styled.div`
     position: sticky;
     top: 0;
     background-color: ${colors.background};
+
+    @media(max-width: 600px){
+        padding-left: 20px;
+        padding-right: 15px;
+    }   
 `;
 
 const Section55Header = styled.div`
@@ -623,6 +744,14 @@ const Section55Header = styled.div`
         font-size: 14px;
     }
 
+    @media(max-width: 600px){
+        padding-left: 20px;
+        padding-right: 15px;
+
+        :hover p{
+            font-size: 0.6rem;
+        }
+    }
 `;
 
 const Class1 = styled.div`
@@ -646,25 +775,44 @@ const Track = styled(Bodytext1)`
     @media(max-width: 700px){
         font-size: 0.6rem;
     }
+
+    @media (max-width:600px){
+        font-size: 0.58rem;
+    }
+
 `;
 
 const Title = styled(Bodytext1)`
     color: ${colors.grayText};
+
+    @media (max-width:600px){
+        font-size: 0.58rem;
+    }
 `;
 
 const Singer = styled(Bodytext1)`
     color: ${colors.grayText};
 
+    @media (max-width:600px){
+        font-size: 0.58rem;
+    }
 `;
 
 const Time = styled(Bodytext1)`
     color: ${colors.grayText};
 
+    @media (max-width:600px){
+        font-size: 0.58rem;
+    }
 `;
 
 const Albumm = styled(Bodytext1)`
     color: ${colors.grayText};
     padding-left: 25px;
+
+    @media (max-width:600px){
+        font-size: 0.58rem;
+    }
 `;
 
 const AshNum = styled(Bodytext2)`
@@ -672,24 +820,40 @@ const AshNum = styled(Bodytext2)`
     padding-right: 25px;
     font-weight: bold;
     cursor: pointer;
+
+    @media (max-width:600px){
+        font-size: 0.64rem;
+    }
 `;
 
 const SongTitle = styled(Bodytext2)`
     color: ${colors.grayText};
     font-weight: bold;
     cursor: pointer;
+
+    @media (max-width:600px){
+        font-size: 0.64rem;
+    }
 `;
 
 const SongSinger = styled(Bodytext2)`
     color: ${colors.grayText};
     font-weight: bold;
     cursor: pointer;
+
+    @media (max-width:600px){
+        font-size: 0.64rem;
+    }
 `;
 
 const SongTime = styled(Bodytext2)`
     color: ${colors.grayText};
     font-weight: bold;
     cursor: pointer;
+
+    @media (max-width:600px){
+        font-size: 0.64rem;
+    }
 `;
 
 const SongAlbumm = styled(Bodytext2)`
@@ -697,6 +861,10 @@ const SongAlbumm = styled(Bodytext2)`
     padding-left: 25px;
     font-weight: bold;
     cursor: pointer;
+
+    @media (max-width:600px){
+        font-size: 0.64rem;
+    }
 `;
 
 
@@ -708,6 +876,12 @@ const Section6 = styled.div`
     height: 85px;
     display: flex;
     justify-content: center;
+
+    @media(max-width: 540px){
+        height: 70px;
+        bottom: 0px;
+    }
+
 `;
 
 const MusicPlayer = styled.div`
@@ -716,6 +890,12 @@ const MusicPlayer = styled.div`
     background-color: ${colors.whiteText};
     border-radius: 10px;
     padding-top: 5px;
+
+    @media(max-width: 540px){
+        padding-top: 0px;
+        width: 100%;
+        border-radius: 0;
+    }
 `;
 
 const TopSide = styled.div`
@@ -726,11 +906,82 @@ const TopSide = styled.div`
     align-items: center;
     padding-left: 20px;
     padding-right: 20px;
+
+    @media (max-width: 540px){
+        height: 90%;
+    }
+`;
+
+const AlbumArt = styled.div`
+    height: 50%;
+    width: 100%;
+    display: none;
+
+    @media(max-width: 540px){
+        display: flex;
+        justify-content: space-between;
+    }
+
+`;
+
+const SongArt = styled.div`
+    display: flex;
+`;
+
+const SongArtPicture = styled.div`
+    width: 40px;
+    height: 100%;
+    background-color: pink;
+    border-radius: 5px;
+`;
+
+const SongArtText = styled.div`
+    display: flex;
+    padding-left: 15px;
+    padding-top: 5px;
+    /* align-items: center; */
+`;
+
+const SongArtText1 = styled(Bodytext2)`
+    color: ${colors.mainBlack};
+    font-weight: bold;
+
+    @media(max-width: 440px){
+        font-size: .7rem;
+    }
+`;
+
+const SongArtText2 = styled(Bodytext2)`
+    color: ${colors.mainBlack};
+
+    @media(max-width: 440px){
+        font-size: .7rem;
+    }
+
+`;
+
+
+const PlayUlt = styled.div`
+    display: none;
+
+    @media(max-width: 540px){
+        display: flex;
+
+        button{
+            border: none;
+            background: none;
+        }
+    }
 `;
 
 const Like = styled.div`
     width: 33%;
     display: flex;
+
+    @media(max-width: 540px){
+        width: 45%;
+        display: none;
+    }
 `;
 
 const Heart = styled.div`
@@ -742,6 +993,16 @@ const Heart = styled.div`
     justify-content: center;
     align-items: center;
     margin-right: 10px;
+
+    @media (max-width:600px){
+        width: 24px;
+        height: 24px;
+
+        svg{
+            width: 19px;
+            height: 19px;
+        }
+    }
 `;
 
 const Play = styled.div`
@@ -758,6 +1019,29 @@ const Play = styled.div`
     svg{
         margin-right: 15px;
     }
+
+    @media (max-width:600px){
+        svg{
+            width: 25px;
+            height: 25px;
+        }
+
+        button svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    @media (max-width:540px){
+        display: none;
+        width: 55%;
+
+        svg{
+            width: 14px;
+            height: 14px;
+        }
+    }
+
 `;
 
 const Volume = styled.div`
@@ -765,8 +1049,17 @@ const Volume = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-`;
 
+    @media(max-width: 540px){
+        width: 20%;
+        display: none;
+
+        svg{
+            width: 15px;
+            height: 15px;
+        }
+    }
+`;
 
 const DownSide = styled.div`
     width: 100%;
@@ -775,12 +1068,26 @@ const DownSide = styled.div`
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
+
+    @media (max-width: 540px){
+        padding-left: 22px;
+        padding-right: 22px;
+    }
 `;
 
 const Timer = styled(Bodytext2)`
     color: ${colors.grayText};
     padding-left: 10px;
     padding-right: 10px;
+
+    @media(max-width: 600px){
+        font-size: .7rem;
+    }
+
+    @media(max-width: 540px){
+        display: none;
+    }
+
 `;
 
 
